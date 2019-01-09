@@ -78,6 +78,7 @@ if [ $(( $(git submodule status --recursive | grep -c "^[+\-]") )) -gt 0 ]; then
    exit 1
 fi
 
+rm -rf build   # delete first to avoid weird error
 mkdir -p build
 pushd build &> /dev/null
 
