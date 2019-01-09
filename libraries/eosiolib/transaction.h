@@ -113,14 +113,14 @@ extern "C" {
    * @param name : account name
    * @return : Return has contract
    */
-   bool has_contract( account_name name);
+   bool has_contract( capi_name name);
 
    /**
    * Get the code of the deployment contract
    * @param name : account name
    * @param code : return contract code
    */
-   void get_contract_code( account_name name, checksum256* code);
+   void get_contract_code( capi_name name, capi_checksum256* code);
 
    /**
     * Get the producer's signature for the action

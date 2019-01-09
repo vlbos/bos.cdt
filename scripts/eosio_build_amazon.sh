@@ -73,7 +73,7 @@
 			printf "\\tPackage %s ${bldred} NOT ${txtrst} found.\\n" "${DEP_ARRAY[$i+1]}"
 			(( COUNT++ ))
 		else
-			printf "\\tPackage %d %s found.\\n" $i+1 "${DEP_ARRAY[$i+1]}"
+			printf "\\tPackage %d %s found.\\n" $(( i+1 )) "${DEP_ARRAY[$i+1]}"
 			continue
 		fi
 	done		
