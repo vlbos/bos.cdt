@@ -99,7 +99,7 @@ extern "C" {
     *
     * @param id : return id
     */
-   void get_transaction_id( transaction_id_type* id );
+   void get_transaction_id( eosio::checksum256* id );
 
    /**
     * Get the action globally unique sequence
@@ -113,14 +113,14 @@ extern "C" {
    * @param name : account name
    * @return : Return has contract
    */
-   bool has_contract( capi_name name);
+   bool has_contract( eosio::name name);
 
    /**
    * Get the code of the deployment contract
    * @param name : account name
    * @param code : return contract code
    */
-   void get_contract_code( capi_name name, capi_checksum256* code);
+   void get_contract_code( eosio::name name, eosio::checksum256* code);
 
    /**
     * Get the producer's signature for the action
