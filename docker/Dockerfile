@@ -1,13 +1,17 @@
 FROM ubuntu:18.04
+ARG branch=master
 
-# Arguments that may be overridden by the user
-ARG release=latest
-
-# Install required packages
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install openssl ca-certificates curl wget && rm -rf /var/lib/apt/lists/*
-
-# Install CDT from deb package
-ADD install_deb.sh /
-RUN /install_deb.sh $release && rm -f install_deb.sh
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install openssl ca-certificates curl wget git cmake python3 g++ && rm -rf /var/lib/apt/lists/* \
+    && cd / && git clone --depth 1 -b $branch https://github.com/boscore/bos.cdt.git --recursive \
+    && cd /bos.cdt/ \
+    && ./build.sh \
+    && ./install.sh \
+    && cd .. \
+    && rm -rf ./bos.cdt
 
 USER root
+
+
+#  https://hub.docker.com/r/gxk666/bos.cdt/tags
+#  docker pull gxk666/bos.cdt
+#  docker run  -v /root:/root/  -it bos.cdt:latest    /bin/bash
